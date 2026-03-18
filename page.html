@@ -19,28 +19,44 @@
     </header>
 
     <main>
-        <section class="hero" id="hero">
-            <div class="container hero-content">
-                <div class="hero-copy">
-                    <p class="eyebrow">Smart hydration for busy days</p>
-                    <h1>Meet the bottle that keeps your routine on track.</h1>
-                    <p class="hero-text">
-                        Luma Bottle helps you stay hydrated with temperature control,
-                        all-day insulation, and a clean design that fits anywhere.
+        <section class="hero product-hero" id="hero">
+            <div class="container product-layout">
+                <article class="product-copy" aria-label="Product information">
+                    <p class="eyebrow">Luma Evolution Series</p>
+                    <h1>500ml Slate Evolution V2 Stainless Steel Insulated Bottle</h1>
+                    <p class="product-subtext">
+                        A slim stainless steel bottle built for modern routines with
+                        long-lasting insulation, leak-proof carry lid, and clean minimal styling.
                     </p>
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="#features">Explore Features</a>
-                        <a class="button button-secondary" href="#contact">Pre-order</a>
-                    </div>
-                </div>
 
-                <aside class="hero-panel" aria-label="Product highlights">
-                    <p class="panel-label">Why people choose Luma</p>
-                    <ul class="hero-list">
-                        <li>Cold for 24 hours, hot for 12h</li>
-                        <li>Leak-proof lid with easy carry loop</li>
-                        <li>Minimal stainless steel body</li>
+                    <div class="product-meta">
+                        <p><strong>Material:</strong> Premium stainless steel</p>
+                        <p><strong>Capacity:</strong> 500ml</p>
+                        <p><strong>Performance:</strong> Cold for 24h · Hot for 12h</p>
+                    </div>
+                </article>
+
+                <figure class="product-gallery" aria-label="Luma product images">
+                    <img src="bottle.jpg" alt="Luma Bottle in slate blue" class="product-main-image" id="product-main-image">
+                    <div class="product-thumbs" role="group" aria-label="Additional product image">
+                        <img src="bottle.jpg" alt="Luma Bottle front view" class="product-thumb is-active" tabindex="0" role="button" aria-label="View front image">
+                        <img src="bottle1.jpg" alt="Luma Bottle lifestyle view" class="product-thumb" tabindex="0" role="button" aria-label="View lifestyle image">
+                    </div>
+                </figure>
+
+                <aside class="product-buy" aria-label="Purchase panel">
+                    <p class="price">$26.00</p>
+                    <h2>Create your perfect bottle</h2>
+                    <ul class="bundle-list">
+                        <li>Teeny Tiny Brush · <span>$1.43</span></li>
+                        <li>Scrubber Bottle Brush · <span>$7.50</span></li>
+                        <li>Classic Sports Cap · <span>$3.00</span></li>
                     </ul>
+                    <div class="hero-actions">
+                        
+                        <a class="button button-primary" href="#contact">Buy Now</a>
+                        <a class="button button-secondary" href="#features">Add to Cart</a>
+                    </div>
                 </aside>
             </div>
         </section>
@@ -101,5 +117,40 @@
             <a href="mailto:hello@lumabottle.example">hello@lumabottle.example</a>
         </div>
     </footer>
+
+    <script>
+        const mainImage = document.querySelector('#product-main-image');
+        const thumbnails = document.querySelectorAll('.product-thumb');
+
+        const setActiveImage = (thumbnail) => {
+            if (!mainImage || !thumbnail) {
+                return;
+            }
+
+            mainImage.src = thumbnail.src;
+            mainImage.alt = thumbnail.alt;
+
+            thumbnails.forEach((item) => {
+                const isActive = item === thumbnail;
+                item.classList.toggle('is-active', isActive);
+                item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+        };
+
+        thumbnails.forEach((thumbnail) => {
+            thumbnail.setAttribute('aria-pressed', thumbnail.classList.contains('is-active') ? 'true' : 'false');
+
+            thumbnail.addEventListener('click', () => {
+                setActiveImage(thumbnail);
+            });
+
+            thumbnail.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setActiveImage(thumbnail);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
