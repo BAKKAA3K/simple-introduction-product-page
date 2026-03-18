@@ -1,5 +1,4 @@
-
-Updated the styling in ex3_productintropage/style.css to add layered gradient backgrounds and make the tablet/desktop layout more deliberate. 
+V1.2
 The page now uses soft radial and linear gradients behind the main content and inside sections, which gives the design more depth without adding clutter. 
 I also made the features area a clearer two-column composition on larger screens: the section heading sits in one column while the feature cards occupy the second column, with the last card spanning the full width for balance. The hero and story sections were also tightened so their text and supporting content sit in more controlled side-by-side proportions.
 
